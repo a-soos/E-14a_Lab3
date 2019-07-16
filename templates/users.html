@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<main class="hero-section">
+    <div class="container">
+        <div class="section-content">
+<html>
+  <body>
+    <h1>Existing Users</h1>
+{% for user in saved_users %}
+         <p>User: {{user.first_name}}</br>Age: {{user.age}}</p>
+  <form method="POST" action="./update">
+    <input type="hidden" value="{{user.first_name}}" name="oldname">
+    <input type="text" value="{{user.first_name}}" name="newname">
+    <input type="submit" value="Update">
+  </form>
+    <form method="POST" action="./update2">
+    <input type="hidden" value="{{user.age}}" name="oldage">
+    <input type="text" value="{{user.age}}" name="newage">
+    <input type="submit" value="Update">
+  </form>
+    <form method="POST" action="/delete">
+        <input type="hidden" value="{{user.first_name}}" name="user">
+        <input type="submit" value="Delete">
+    </form>
+    {% endfor %}
+  </body>
+</html>
+        </div>
+            </div>
+</main>
+{% endblock %}
